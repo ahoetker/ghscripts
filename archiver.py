@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3.6
 # archiver.py - copy directory to location and compress it
 # created largely to learn about click and shutil
 
