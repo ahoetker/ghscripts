@@ -16,7 +16,6 @@ def copyDir(v, src, dest):
     This program copies the SRC directory to DEST. If the DEST directory
     already exists, it will be moved to a timestamped .zip archive.
     """
-    errors = []
     if v is True:
         print(f"Copying {src} to {dest}")
     try:
