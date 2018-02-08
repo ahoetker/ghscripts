@@ -12,7 +12,7 @@ git pull
 hugo -D
 
 # copy contents from publish_dir to container webroot
-cp -r "$site_dir/$publish_dir/*" $container_www
+cp -r "$site_dir/$publish_dir/"* $container_www
 
 # finished
 echo "Done"
