@@ -1,5 +1,5 @@
 #!/Users/andrew/anaconda/envs/matlab35/bin/python
-# publish-mfile.py
+# publishmfile.py
 
 import click
 import os
