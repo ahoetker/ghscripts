@@ -56,7 +56,8 @@ def typeset(texfile, v):
     else:
         devnull = open(os.devnull, 'w')
         subprocess.call(['pdflatex', texfile], shell=False, stdout=devnull)
-        print("Typesetting complete (pdflatex)")
+
+    print("Typesetting complete (pdflatex)")
 
 
 if __name__ == '__main__':
