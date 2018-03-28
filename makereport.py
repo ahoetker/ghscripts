@@ -1,8 +1,6 @@
-#!/Users/andrew/anaconda/envs/matlab35/bin/python
-# makereport.py - build MATLAB report from .m files and yaml
+# makereport.py - build mfile report from yaml outline
 
 import yaml
-import click
 
 class Outline(yaml.YAMLObject):
     yaml_tag = u'!Outline'
@@ -12,18 +10,18 @@ class Outline(yaml.YAMLObject):
         self.functions = functions
         self.publish = publish
 
-@click.command()
-@click.argument('yaml_file', type=click.File('r'))
-@click.argument('output_file', type=click.File('w'))
-@click.option('--funcs', is_flag=True, help="Append user functions.")
-@click.option('-p', is_flag=True, help="Publish the report after building.")
 
-def makeReport(yaml_file, output_file, funcs, p):
+def makeReport(yaml_file, output_file, funcs):
     """
-    Build a full m-file report for publication from indivudial mfiles.
-    Structure is derived from YAML file.
+    Create MATLAB report as a single m-file.
+
+    :param yaml_file: YAML outline file for report.
+    :param output_file: m-file destination for finished report.
+    :param funcs: flag, include referenced functions from outline.
+    :return: None
     """
-    outline = yaml.load(yaml_file)
+    with open(yaml_file) as y:
+        outline = yaml.load(y)
 
     header = ""
     for txtfile in outline.header:
@@ -53,8 +51,6 @@ def makeReport(yaml_file, output_file, funcs, p):
             functions += comment + "\n\n"
 
     report = header + problems + functions
-    output_file.write(report)
 
-
-if __name__ == '__main__':
-    makeReport()
+    with open(output_file, 'w') as f:
+        f.write(report)
