@@ -13,11 +13,15 @@ import matlab.engine
 @click.option('-t', is_flag=True, help="Use pdflatex to typeset output.")
 @click.option('-v', is_flag=True, help="Verbose pdflatex messages.")
 
-
-def publishMfile(mfile, format, t, v):
+def main(mfile, format, t, v):
     """
     Use the MATLAB Engine to publish an mfile without needing to load the GUI.
     """
+    publishMfile(mfile, format, t, v)
+
+
+def publishMfile(mfile, format, t, v):
+
     if format not in ["html", "pdf", "latex", "xml"]:
         raise AttributeError("{} is not a valid format.".format(format))
 
@@ -61,4 +65,4 @@ def typeset(texfile, v):
 
 
 if __name__ == '__main__':
-    publishMfile()
+    main()
