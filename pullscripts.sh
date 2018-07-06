@@ -7,6 +7,7 @@ scripts=/home/andrew/scripts
 filetypes=(py sh)
 
 cd $repo
+git pull
 for filetype in $filetypes;
 do
     cp *.$filetype $scripts/
