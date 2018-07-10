@@ -4,8 +4,9 @@ import click
 
 
 @click.command()
-@click.argument("text")
-def makesection(text):
+@click.argument("words", nargs=-1)
+def makesection(words):
+    text = " ".join(words)
     middle = "# {} #".format(text)
     border = "#" * len(middle)
     section = "\n".join([border, middle, border])
