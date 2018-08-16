@@ -24,5 +24,5 @@ else:
     roll = None
     print("Incorrect number of arguments")
 
-if roll:
+if roll is not None:
     print(roll)
