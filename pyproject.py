@@ -10,6 +10,10 @@ def make_project(project_dir):
     project_dir = Path(project_dir)
     Path.mkdir(project_dir, exist_ok=False)
 
+    author = "Andrew Hoetker"
+    email = "ahoetker@me.com"
+    github_username = "ahoetker"
+
     readme_contents = """# {0}
 
 ## Getting Started
@@ -27,10 +31,10 @@ def make_project(project_dir):
 ## Authors
 Author | Contact | Github
 --- | --- | ---
-Andrew Hoetker | ahoetker@me.com | [ahoetker](https://github.com/ahoetker)
+{1} | {2} | [{3}](https://github.com/{3})
 
 ## License
-    """.format(project_dir.name)
+    """.format(project_dir.name, author, email, github_username)
 
     gitignore_contents = """# byte-compiled files
 */__pycache__/
@@ -54,14 +58,14 @@ setup(
     version="0.1",
     description="placeholder",
     url="placeholder",
-    author="Andrew Hoetker",
-    author_email="ahoetker@me.com",
+    author="{1}",
+    author_email="{2}",
     install_requires=[
     ],
     packages=find_packages(),
     zip_safe=False,
 )
-""".format(project_dir.name)
+""".format(project_dir.name, author, email)
 
     readme = Path(project_dir / "README.md")
     Path.touch(readme)
